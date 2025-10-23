@@ -1,13 +1,3 @@
-  // DEMONSTRATION: The following is NOT valid JSON and will break VS Code tasks.
-  // JSON does not support multi-line or here-string PowerShell scripts in the args array.
-  // Attempting to use a here-string or multi-line script will result in a JSON parse error.
-  // Example (do NOT uncomment):
-  /*
-  "args": [
-    "@'\n# PowerShell script...\nif (-not $env:BLENDER_PYTHON) {\n  ...\n}\n'@"
-  ],
-  */
-  // Instead, use a single-line string for the script (see working branch).
 {
   "version": "2.0.0",
   "tasks": [
