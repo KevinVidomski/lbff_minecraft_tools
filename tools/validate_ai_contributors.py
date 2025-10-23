@@ -18,13 +18,10 @@ DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 
 def main() -> int:
-    """
-    Validate the .github/AI_CONTRIBUTORS.csv file and report any format errors.
-    
-    Performs existence and content checks on the CSV and prints error messages for problems found. It verifies the header equals ["nickname", "model", "current_date"], skips empty rows, ensures each non-empty row has exactly three columns, and checks that the date column matches the YYYY-MM-DD pattern. Prints "[OK] AI contributors CSV looks good" when no issues are found.
-    
-    Returns:
-        int: Exit code where `0` indicates the CSV passed all checks, and `1` indicates any error (missing file, empty file, unexpected header, wrong column count, or invalid date format).
+    """Validate the AI contributors CSV and return an exit code.
+
+    Returns 0 when validation passes, non-zero otherwise. Prints errors to
+    stdout for any validation failures.
     """
     if not CSV.exists():
         print(f"[ERROR] {CSV} not found")

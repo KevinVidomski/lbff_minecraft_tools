@@ -51,3 +51,7 @@ The hook runs `tools/check_draw_callback_storage.py` which ensures any use of `T
 All AI agents MUST record themselves in `.github/AI_CONTRIBUTORS.md` before performing work in the repository on any given day. Use the format:
 
 Agent display name — nickname: user provided nickname model: model name or "undisclosed" — date: YYYY-MM-DD
+
+## Temporary admin bypass notice
+
+An administrative bypass was used to merge a change when a strict review requirement blocked an urgent administrative merge. The branch-protection `enforce_admins` setting was temporarily disabled by repository administrators to allow the merge; it will be re-enabled afterwards. If you have questions about this policy, please contact the repository owner.

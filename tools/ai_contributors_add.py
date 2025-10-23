@@ -15,17 +15,9 @@ CSV = ROOT / ".github" / "AI_CONTRIBUTORS.csv"
 
 
 def validate_date(s):
-    """
-    Validate that a string is a date in YYYY-MM-DD format and return it unchanged.
-    
-    Parameters:
-        s (str): Date string to validate.
-    
-    Returns:
-        str: The validated date string.
-    
-    Raises:
-        argparse.ArgumentTypeError: If `s` cannot be parsed as YYYY-MM-DD.
+    """Validate --date argument is YYYY-MM-DD and return the string on success.
+
+    Raises argparse.ArgumentTypeError when the format is invalid.
     """
     try:
         datetime.strptime(s, "%Y-%m-%d")
@@ -35,15 +27,10 @@ def validate_date(s):
 
 
 def main(argv=None):
-    """
-    Append a contributor row (nickname, model, date) to the repository's .github/AI_CONTRIBUTORS.csv.
-    
-    If the CSV file does not exist, its parent directory is created and a new CSV is initialized with the header
-    ["nickname", "model", "current_date"]. The provided nickname, model, and date are then appended as a new row,
-    and a confirmation message is printed.
-    
-    Parameters:
-        argv (list[str] | None): Optional list of command-line arguments to parse; if None, the process' argv is used.
+    """CLI entrypoint: parse args and append a row to the AI contributors CSV.
+
+    This function is safe to call from scripts and returns None (exits via
+    sys.exit when used as __main__).
     """
     p = argparse.ArgumentParser()
     p.add_argument("--nickname", required=True)
