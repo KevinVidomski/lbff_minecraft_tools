@@ -1,0 +1,12 @@
+
+{
+    "name": "blender-dev",
+    "extensions": [
+        {
+            "id": "ms-python.python"
+        },
+        {
+            "id": "JacquesLucke.blender-development"
+        }
+    ]
+}

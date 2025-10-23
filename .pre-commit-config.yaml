@@ -1,0 +1,11 @@
+repos:
+  - repo: local
+    hooks:
+      - id: draw-callback-storage
+        name: Draw-callback storage check
+        entry: python tools/check_draw_callback_storage.py
+        language: system
+        files: '\.py$'
+        # always run the hook so the linter executes even when pre-commit
+        # doesn't detect changed files (useful for local `pre-commit run --all-files`).
+        always_run: true
