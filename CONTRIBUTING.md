@@ -42,4 +42,4 @@ The hook runs `tools/check_draw_callback_storage.py` which ensures any use of `T
 
 All AI agents MUST record themselves in `.github/AI_CONTRIBUTORS.md` before performing work in the repository on any given day. Use the format:
 
-Agent display name — model: model name or "undisclosed" — date: YYYY-MM-DD
+Agent display name —  nickname: user provided nickname model: model name or "undisclosed" — date: YYYY-MM-DD

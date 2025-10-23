@@ -13,5 +13,5 @@ repos:
         name: AI contributors CSV validate
         entry: python tools/validate_ai_contributors.py
         language: system
-        files: '^.github/AI_CONTRIBUTORS.csv$'
+        files: "^.github/AI_CONTRIBUTORS.csv$"
         always_run: true
