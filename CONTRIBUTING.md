@@ -37,3 +37,9 @@ pre-commit run --all-files
 ```
 
 The hook runs `tools/check_draw_callback_storage.py` which ensures any use of `TOPBAR_MT_editor_menus.append(...)` in Python modules is accompanied by a draw-callback assignment (e.g. `MyMenu._draw_fn = draw_fn`). This prevents accidental removal of other addons' callbacks.
+
+## Automated contributors
+
+All AI agents MUST record themselves in `.github/AI_CONTRIBUTORS.md` before performing work in the repository on any given day. Use the format:
+
+Agent display name — model: model name or "undisclosed" — date: YYYY-MM-DD
