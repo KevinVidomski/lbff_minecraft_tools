@@ -18,6 +18,11 @@ DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 
 def main() -> int:
+    """Validate the AI contributors CSV and return an exit code.
+
+    Returns 0 when validation passes, non-zero otherwise. Prints errors to
+    stdout for any validation failures.
+    """
     if not CSV.exists():
         print(f"[ERROR] {CSV} not found")
         return 1

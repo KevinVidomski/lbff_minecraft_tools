@@ -15,6 +15,10 @@ CSV = ROOT / ".github" / "AI_CONTRIBUTORS.csv"
 
 
 def validate_date(s):
+    """Validate --date argument is YYYY-MM-DD and return the string on success.
+
+    Raises argparse.ArgumentTypeError when the format is invalid.
+    """
     try:
         datetime.strptime(s, "%Y-%m-%d")
         return s
@@ -23,6 +27,11 @@ def validate_date(s):
 
 
 def main(argv=None):
+    """CLI entrypoint: parse args and append a row to the AI contributors CSV.
+
+    This function is safe to call from scripts and returns None (exits via
+    sys.exit when used as __main__).
+    """
     p = argparse.ArgumentParser()
     p.add_argument("--nickname", required=True)
     p.add_argument("--model", required=True)
