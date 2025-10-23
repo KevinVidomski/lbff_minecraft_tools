@@ -22,6 +22,8 @@ This repo contains small Blender addons. Follow these lightweight rules to make 
   gh pr edit <pr-number> --body-file .github/PR_BODY.md
   ```
 
+Note: PRs with long descriptions should use `.github/PR_BODY.md` (automated checks may enforce this in CI).
+
 ## Notes for reviewers
 
 - Look for `# TODO: Copilot:` markers — they indicate AI-assisted stubs that need a human review.
