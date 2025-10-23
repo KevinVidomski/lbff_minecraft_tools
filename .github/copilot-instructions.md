@@ -154,5 +154,6 @@ This repository implements a small suite of Blender add-ons collected under the 
   - DO respect the explicit `ADDON_MODULES` list when updating `lbff_all_in_one` — do not auto-scan without updating the list.
   - DO NOT assume the main menu always exists; use the `lbff_gaffer` try/fallback pattern.
   - DO keep `register()` idempotent and resilient to partial loads; follow the existing pattern of printing import/register failures.
+  - DO NOT run multiple terminal commands in one line. i.e. don't use ``;``
 
   If anything above is unclear or missing, tell me what you want the agent to be able to do first (e.g., add a new addon, refactor menu wiring, or migrate the loader to dynamic discovery) and I'll iterate.

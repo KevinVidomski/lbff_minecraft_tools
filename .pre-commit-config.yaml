@@ -9,3 +9,9 @@ repos:
         # always run the hook so the linter executes even when pre-commit
         # doesn't detect changed files (useful for local `pre-commit run --all-files`).
         always_run: true
+      - id: ai-contributors-csv
+        name: AI contributors CSV validate
+        entry: python tools/validate_ai_contributors.py
+        language: system
+        files: "^.github/AI_CONTRIBUTORS.csv$"
+        always_run: true
