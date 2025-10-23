@@ -13,5 +13,5 @@ venv/
 *.blend2
 *.blend_autosave
 
-# VSCode
-.vscode/
+# VSCode (allow .vscode/tasks.json for demonstration PR)
+# .vscode/
