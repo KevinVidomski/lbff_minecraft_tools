@@ -15,7 +15,11 @@ from pathlib import Path
 
 
 def module_has_draw_assignment(tree: ast.AST) -> bool:
-    """Return True if module AST contains an assignment to an attribute with 'draw' in the name."""
+    """Return True if module AST contains an assignment to an attribute with 'draw' in the name.
+
+    This detects simple assignments like ``MyMenu._draw_fn = draw_fn`` so the
+    module is considered to follow the draw-callback storage pattern.
+    """
     for node in ast.walk(tree):
         if isinstance(node, ast.Assign):
             for target in node.targets:
@@ -26,7 +30,12 @@ def module_has_draw_assignment(tree: ast.AST) -> bool:
 
 
 def find_topbar_appends(tree: ast.AST):
-    """Yield (lineno, col) for append calls on TOPBAR_MT_editor_menus."""
+    """Yield (lineno, col) tuples for found append calls on TOPBAR_MT_editor_menus.
+
+    The linter only inspects the final attribute name in the attribute chain so
+    ``bpy.types.TOPBAR_MT_editor_menus.append(...)`` and similar attribute chains
+    are detected.
+    """
     for node in ast.walk(tree):
         if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute):
             func = node.func
