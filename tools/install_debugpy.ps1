@@ -23,8 +23,13 @@ if (-not (Test-Path $env:BLENDER_PYTHON)) {
 # Try to install debugpy
 try {
   & "$env:BLENDER_PYTHON" -m ensurepip
+  if ($LASTEXITCODE -ne 0) { throw "ensurepip failed with exit code $LASTEXITCODE" }
+  
   & "$env:BLENDER_PYTHON" -m pip install --upgrade pip
+  if ($LASTEXITCODE -ne 0) { throw "pip upgrade failed with exit code $LASTEXITCODE" }
+  
   & "$env:BLENDER_PYTHON" -m pip install debugpy
+  if ($LASTEXITCODE -ne 0) { throw "debugpy install failed with exit code $LASTEXITCODE" }
 } catch {
   Write-Host ""
   Write-Host 'ERROR: Failed to run python commands in Blender''s Python.' -ForegroundColor Red
