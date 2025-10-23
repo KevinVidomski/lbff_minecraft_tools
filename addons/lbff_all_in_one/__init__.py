@@ -1,4 +1,18 @@
 
+"""All-in-one addon loader for LBFF packages.
+
+This module provides a small loader that ensures a single LBFF main menu
+is available and then loads the individual LBFF addon modules listed in
+`ADDON_MODULES`. Addons should expose `register()` / `unregister()` and
+optionally a `classes` list; this loader will call `mod.register()` when
+present and print import/register errors to stderr.
+
+Design notes:
+- Keeps registration resilient: failures in one submodule don't stop
+    others from registering.
+- Maintains the LBFF menu ownership pattern used across the repository.
+"""
+
 bl_info = {
     "name": "LBFF All-in-One",
     "author": "You & Gemini",
