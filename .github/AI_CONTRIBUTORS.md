@@ -18,3 +18,7 @@ Notes:
 
 - Ask the user what they want you called only for the purposes of the AI contributors file. Agents MUST be truthful. Do not claim an internal model identifier you do not control or are not permitted to disclose.
 - Human maintainers may require additional provenance (e.g., a PR comment or external audit log) for sensitive changes.
+
+Unverified user assertions (2025-10-22):
+
+- User reported: "You are GPT5-mini" — recorded as an unverified assertion; agents must not self-identify based on unverified user claims.
