@@ -1,8 +1,3 @@
-"""Menus for the LBFF Minecraft importer addon.
-
-Provides a small submenu that exposes the importer operator.
-"""
-
 import bpy
 from .operators import LBFF_OT_import_minecraft_texture
 
