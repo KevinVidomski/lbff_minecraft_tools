@@ -1,4 +1,12 @@
 
+"""Minecraft importer addon wiring for LBFF.
+
+This module exposes the addon metadata and registers the importer operator
+and its submenu. It follows the LBFF pattern: try to append to the global
+`LBFF_MT_main_menu` if present, otherwise provide a small main menu so the
+sub-menu can be accessed.
+"""
+
 bl_info = {
     "name": "LBFF Minecraft Importer",
     "author": "You & Gemini",
