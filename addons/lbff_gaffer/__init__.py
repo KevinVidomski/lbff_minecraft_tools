@@ -1,3 +1,11 @@
+"""Lighting tools addon (LBFF Gaffer).
+
+This addon provides small helpers to create standard lighting setups. The
+module follows the LBFF pattern for menus: it attempts to append its menu
+to the global `LBFF_MT_main_menu` and falls back to creating the main menu
+if it's not yet present (useful when the all-in-one loader isn't enabled).
+"""
+
 bl_info = {
     "name": "LBFF Gaffer",
     "author": "You & Gemini",
