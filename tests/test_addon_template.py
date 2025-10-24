@@ -17,7 +17,7 @@ def make_fake_bpy():
 
     # Minimal types namespace
     types_mod = types.SimpleNamespace()
-    fake_bpy.types = types_mod
+    setattr(fake_bpy, "types", types_mod)
 
     class Dummy:
         pass
@@ -38,13 +38,15 @@ def make_fake_bpy():
         if hasattr(cls, "_registered"):
             delattr(cls, "_registered")
 
-    fake_bpy.utils = types.SimpleNamespace(register_class=register_class, unregister_class=unregister_class)
+    setattr(fake_bpy, "utils", types.SimpleNamespace(register_class=register_class, unregister_class=unregister_class))
 
     return fake_bpy
 
 
 def import_module_from_path(path: Path):
     spec = importlib.util.spec_from_file_location("lbff_addon_template", str(path))
+    if spec is None or spec.loader is None:
+        raise ImportError(f"Cannot load module from {path}")
     module = importlib.util.module_from_spec(spec)
     sys.modules[spec.name] = module
     spec.loader.exec_module(module)

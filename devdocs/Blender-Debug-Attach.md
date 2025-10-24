@@ -27,15 +27,27 @@ Note: The installer script now lives in `tools/install_debugpy.ps1`. The VS Code
 
 Run the task:
 
-- **Tasks: Run Task** → `Start Blender with debugpy startup script`
-
 This will launch Blender and run the helper script that starts debugpy listening on port 5678.
+
+## Editor setup for linting and Intellisense
+
+This repository includes lightweight type stubs for `debugpy` so your editor
+and linters (Pylance/pyright/pylint) can resolve `import debugpy` even when
+debugpy is only installed into Blender's embedded Python. The stubs live in
+`stubs/debugpy` and provide minimal signatures used by the startup script.
+
+If you're using VS Code the workspace settings are configured to find the
+stubs automatically (`.vscode/settings.json`). After pulling these changes
+reload the window (Developer: Reload Window) so the Python language server
+picks up the updated `python.analysis.extraPaths`.
+
+If you prefer not to use the bundled stubs, you can point your editor directly
+at your Blender installation's site-packages directory instead (for example,
+`D:\Program Files\Blender Foundation\Blender 4.5\4.5\python\Lib\site-packages`).
 
 ## 4. Attach the VS Code debugger
 
 Use the provided `.vscode/launch.json` configuration:
-
-- **Run & Debug** → `Python: Attach to Blender debugpy`
 
 This will connect to Blender's Python process. Once attached, you can set breakpoints in your addon code.
 

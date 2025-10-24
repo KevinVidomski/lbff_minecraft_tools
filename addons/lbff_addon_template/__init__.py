@@ -25,7 +25,9 @@ bl_info = {
 }
 
 from typing import List
-import bpy
+
+if __name__ != "__main__":
+    import bpy
 
 # Example operator
 class LBFF_OT_template_action(bpy.types.Operator):

@@ -29,6 +29,7 @@ def get_addon_modules():
     """Dynamically import and return the addon modules."""
     modules = []
     # The package is '..', which is 'lbff.addons'
+
     package = __package__.rsplit('.', 1)[0]
     for mod_name in ADDON_MODULES:
         try:
