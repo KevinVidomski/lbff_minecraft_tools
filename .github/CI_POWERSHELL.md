@@ -24,7 +24,7 @@ Options
 
    ```yaml
    - name: Setup PowerShell
-     uses: PowerShell/PowerShell@v1
+     uses: actions/setup-powershell
      with:
        version: '7.4'
    ```
