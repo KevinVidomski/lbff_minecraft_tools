@@ -31,6 +31,31 @@ Run the task:
 
 This will launch Blender and run the helper script that starts debugpy listening on port 5678.
 
+## E2E (End to End) check script and configurable timeout
+
+For automated tests we provide an E2E-friendly startup script at
+`tools/ai/start_debugpy_e2e_check.py`. Unlike the regular startup script
+which optionally waits for a debugger, the E2E script starts debugpy listening
+and sleeps for a short period so a test harness can attach and then continue.
+
+Configuration
+
+- The sleep timeout (seconds) is read from the environment variable
+  `BLENDER_DEBUGPY_E2E_TIMEOUT`. For convenience this repository's example
+  `.env` file contains `BLENDER_DEBUGPY_E2E_TIMEOUT=12`.
+- You can also override the timeout per-launch with a CLI argument:
+
+```ps1
+blender --python tools/ai/start_debugpy_e2e_check.py -- --timeout 5
+```
+
+Notes
+
+- The `--` separates Blender's `--python` argument from the script's own
+  arguments.
+- Use the E2E script in CI to programmatically verify the debugpy listener
+  is accepting connections on port 5678 without blocking indefinitely.
+
 ## 4. Attach the VS Code debugger
 
 Use the provided `.vscode/launch.json` configuration:
