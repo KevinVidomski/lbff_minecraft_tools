@@ -6,9 +6,9 @@
       "type": "shell",
       "command": "powershell",
       "args": [
-  "-NoProfile",
-  "-File",
-  "${workspaceFolder}\\tools\\install_debugpy.ps1"
+        "-NoProfile",
+        "-File",
+        "${workspaceFolder}/tools/install_debugpy.ps1"
       ],
       "presentation": {
         "reveal": "always"

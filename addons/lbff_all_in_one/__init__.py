@@ -23,6 +23,7 @@ import importlib
 ADDON_MODULES = [
     "lbff_minecraft_importer",
     "lbff_gaffer",
+    "lbff_my_feature",
 ]
 
 def get_addon_modules():
