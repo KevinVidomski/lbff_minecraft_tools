@@ -1,0 +1,46 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Install debugpy into Blender Python",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+  "-NoProfile",
+  "-File",
+  "${workspaceFolder}\\tools\\install_debugpy.ps1"
+      ],
+      "presentation": {
+        "reveal": "always"
+      },
+      "options": {
+        "envFile": "${workspaceFolder}/.env"
+      },
+      "problemMatcher": [
+        "$python"
+      ]
+    },
+    {
+      "label": "Start Blender with debugpy startup script",
+      "type": "shell",
+      "command": "${env:BLENDER_EXE} --python \"${workspaceFolder}\\tools\\start_debugpy_in_blender.py\"",
+      "presentation": {
+        "reveal": "always"
+      },
+      "options": {
+        "envFile": "${workspaceFolder}/.env"
+      }
+    },
+    {
+      "type": "markdownlint",
+      "problemMatcher": [
+        "$markdownlint"
+      ],
+      "label": "markdownlint: Lint all Markdown files in the workspace with markdownlint",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    }
+  ]
+}
