@@ -1,0 +1,46 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Install debugpy into Blender Python",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-Command",
+        "# Prompt for Blender python.exe if not set\nif (-not $env:BLENDER_PYTHON) {\n  $input = Read-Host 'Enter full path to Blender python.exe [D:/Program Files/Blender/4.5/python/bin/python.exe]:';\n  if ([string]::IsNullOrWhiteSpace($input)) {\n    $env:BLENDER_PYTHON = 'D:/Program Files/Blender/4.5/python/bin/python.exe'\n  } else {\n    $env:BLENDER_PYTHON = $input\n  }\n}\n# Check if the python.exe exists\nif (-not (Test-Path $env:BLENDER_PYTHON)) {\n  Write-Host '';\n  Write-Host 'ERROR: The specified Blender python.exe was not found.' -ForegroundColor Red;\n  Write-Host 'Please check your Blender installation directory and try again.' -ForegroundColor Yellow;\n  Write-Host 'Tip: Open Blender, go to Scripting workspace, and run: import sys; print(sys.executable)';\n  exit 1\n}\n# Try to install debugpy\ntry {\n  & \"$env:BLENDER_PYTHON\" -m ensurepip;\n  & \"$env:BLENDER_PYTHON\" -m pip install --upgrade pip;\n  & \"$env:BLENDER_PYTHON\" -m pip install debugpy\n} catch {\n  Write-Host '';\n  Write-Host 'ERROR: Failed to run python commands in Blender''s Python.' -ForegroundColor Red;\n  Write-Host 'Make sure Blender is installed correctly and you have permission to run its python.exe.' -ForegroundColor Yellow;\n  exit 1\n}"
+  ],
+      "presentation": {
+        "reveal": "always"
+      },
+      "options": {
+        "envFile": "${workspaceFolder}/.env"
+      },
+      "problemMatcher": [
+        "$python"
+      ]
+    },
+    {
+      "label": "Start Blender with debugpy startup script",
+      "type": "shell",
+      "command": "${env:BLENDER_EXE} --python \"${workspaceFolder}\\tools\\start_debugpy_in_blender.py\"",
+      "presentation": {
+        "reveal": "always"
+      },
+      "options": {
+        "envFile": "${workspaceFolder}/.env"
+      }
+    },
+    {
+      "type": "markdownlint",
+      "problemMatcher": [
+        "$markdownlint"
+      ],
+      "label": "markdownlint: Lint all Markdown files in the workspace with markdownlint",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    }
+  ]
+}
